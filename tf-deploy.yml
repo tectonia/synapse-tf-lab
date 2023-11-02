@@ -44,7 +44,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    commandOptions: '-var="sql_administrator_password=$(sql_administrator_password)" -var="client_id=$(client_id)" -var="client_secret=$(client_secret)" -var="tenant_id=$(tenant_id)" -var="subscription_id=$(subscription_id)" -input=false'
+    commandOptions: '-var="sql_administrator_password=$(sql_administrator_password)" -var="client_id=$(client_id)" -var="client_secret=$(client_secret)" -var="tenant_id=$(tenant_id)" -var="subscription_id=$(subscription_id)" -input=false -lock=false'
     environmentServiceNameAzureRM: 'terraform-serv-conn'
   displayName: Terraform Plan
 
@@ -52,6 +52,6 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    commandOptions: '-var="sql_administrator_password=$(sql_administrator_password)" -var="client_id=$(client_id)" -var="client_secret=$(client_secret)" -var="tenant_id=$(tenant_id)" -var="subscription_id=$(subscription_id)" -input=false'
+    commandOptions: '-var="sql_administrator_password=$(sql_administrator_password)" -var="client_id=$(client_id)" -var="client_secret=$(client_secret)" -var="tenant_id=$(tenant_id)" -var="subscription_id=$(subscription_id)" -input=false -lock=false'
     environmentServiceNameAzureRM: 'terraform-serv-conn'
   displayName: Terraform Apply
