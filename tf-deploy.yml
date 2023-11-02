@@ -14,6 +14,9 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+- group: tf-vars
+
 steps:
 - task: TerraformInstaller@1
   inputs:
@@ -41,7 +44,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    commandOptions: '-var="sql_administrator_password=$(sql_administrator_password)" -input=false'
+    commandOptions: '-var="sql_administrator_password=$(sql_administrator_password)"'
     environmentServiceNameAzureRM: 'terraform-secret-conn'
   displayName: Terraform Plan
 
@@ -49,6 +52,6 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    commandOptions: '-var="sql_administrator_password=$(sql_administrator_password)" -input=false'
+    commandOptions: '-var="sql_administrator_password=$(sql_administrator_password)"'
     environmentServiceNameAzureRM: 'terraform-secret-conn'
   displayName: Terraform Apply
