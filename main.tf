@@ -68,3 +68,31 @@ resource "azurerm_synapse_workspace" "synapse" {
         type = "SystemAssigned"
     }
 }
+
+# Create a dedicated SQL pool
+resource "azurerm_synapse_sql_pool" "sqlpool" {
+  name                 = "${var.uniqueString}sqlpool${var.envName}"
+  synapse_workspace_id = azurerm_synapse_workspace.synapse.id
+  sku_name             = "DW100c"
+  create_mode          = "Default"
+}
+
+# Create an Apache Spark pool
+resource "azurerm_synapse_spark_pool" "sparkpool" {
+  name                 = "${var.uniqueString}sparkpool${var.envName}"
+  synapse_workspace_id = azurerm_synapse_workspace.synapse.id
+  node_size_family     = "MemoryOptimized"
+  node_size            = "Medium"
+  cache_size           = 100
+  auto_scale {
+    max_node_count = 40
+    min_node_count = 3
+  }
+  auto_pause {
+    delay_in_minutes = 15
+  }
+  tags = {
+    environment = var.envName
+    source = "Terraform"
+  }
+}
