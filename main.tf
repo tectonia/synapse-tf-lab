@@ -64,4 +64,7 @@ resource "azurerm_synapse_workspace" "synapse" {
         environment = var.envName
         source = "Terraform"
     }
+    identity {
+        type = "SystemAssigned"
+    }
 }
