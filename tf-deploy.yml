@@ -64,5 +64,5 @@ steps:
       Install-Module Az.Synapse -RequiredVersion 0.7.0 -Scope CurrentUser -Force -AllowClobber
       $WorkspaceName = "$(uniqueString)" + '-synapse-' + "$(envName)"
       New-AzSynapseRoleAssignment -WorkspaceName $WorkspaceName -RoleDefinitionName "Workspace Admin" -ObjectID "$(user_object_id)"
-    azurePowerShellVersion: 'LatestVersion'
+    preferredAzurePowerShellVersion: '3.1.0'
   displayName: Assign workspace permissions
