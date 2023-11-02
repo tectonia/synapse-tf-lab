@@ -9,13 +9,13 @@
 		"vscode": {
 			"extensions": [
 				"GitHub.copilot",
-                "ms-azuretools.vscode-azureterraform",
-                "hashicorp.terraform",
+                		"ms-azuretools.vscode-azureterraform",
+                		"hashicorp.terraform",
 				"ms-vscode.azurecli"	
 			]
 		}
 	},
-	// "postCreateCommand":
+	// "postCreateCommand": ""
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
