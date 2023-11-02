@@ -1,11 +1,13 @@
 variable "subscription_id" {
   type        = string
   description = "Azure Subscription ID"
+  sensitive = true
 }
 
 variable "client_id" {
   type        = string
   description = "Azure Client ID"
+  sensitive = true
 }
 
 variable "client_secret" {
@@ -17,6 +19,7 @@ variable "client_secret" {
 variable "tenant_id" {
   type        = string
   description = "Azure Tenant ID"
+  sensitive = true
 }
 
 variable "envName" {
