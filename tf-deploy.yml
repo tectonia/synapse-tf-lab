@@ -58,7 +58,7 @@ steps:
 
 - task: AzurePowerShell@5
   inputs:
-    azureSubscription: 'terraform-serv-conn'
+    azureSubscription: 'terraform-secret-conn'
     ScriptType: 'InlineScript'
     Inline: |
       Install-Module Az.Synapse -RequiredVersion 0.7.0 -Scope CurrentUser -Force -AllowClobber
