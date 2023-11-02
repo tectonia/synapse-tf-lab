@@ -79,7 +79,7 @@ resource "azurerm_synapse_sql_pool" "sqlpool" {
 
 # Create an Apache Spark pool
 resource "azurerm_synapse_spark_pool" "sparkpool" {
-  name                 = "${var.uniqueString}sparkpool${var.envName}"
+  name                 = "${var.uniqueString}spark${var.envName}"
   synapse_workspace_id = azurerm_synapse_workspace.synapse.id
   node_size_family     = "MemoryOptimized"
   node_size            = "Medium"
