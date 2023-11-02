@@ -69,6 +69,14 @@ resource "azurerm_synapse_workspace" "synapse" {
     }
 }
 
+# Create firewall rules for the workspace
+resource "azurerm_synapse_firewall_rule" "firewall" {
+    name                = "AllowAll"
+    synapse_workspace_id = azurerm_synapse_workspace.synapse.id
+    start_ip_address    = "0.0.0.0"
+    end_ip_address      = "255.255.255.255"
+}
+
 # Create a dedicated SQL pool
 resource "azurerm_synapse_sql_pool" "sqlpool" {
   name                 = "${var.uniqueString}sqlpool${var.envName}"
