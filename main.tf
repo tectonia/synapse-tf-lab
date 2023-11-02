@@ -91,6 +91,13 @@ resource "azurerm_role_assignment" "userstorageaccess" {
     principal_id         = var.user_object_id
 }
 
+# Give the user access to the workspace
+resource "azurerm_synapse_role_assignment" "synapseadmin" {
+    synapse_workspace_id  = azurerm_synapse_workspace.synapse.id
+    role_name      = "Synapse Administrator"
+    principal_id   = var.user_object_id  
+}
+
 # Create a dedicated SQL pool
 resource "azurerm_synapse_sql_pool" "sqlpool" {
   name                 = "${var.uniqueString}sqlpool${var.envName}"
