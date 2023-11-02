@@ -66,7 +66,7 @@ resource "azurerm_synapse_workspace" "synapse" {
     location            = azurerm_resource_group.rg.location
     sql_administrator_login          = var.sql_administrator_login
     sql_administrator_login_password = var.sql_administrator_login
-    storage_data_lake_gen2_filesystem_id = storage_data_lake_gen2_filesystem_id.filesystem.id
+    storage_data_lake_gen2_filesystem_id = storage_data_lake_gen2_filesystem.filesystem.id
     tags = {
         environment = var.envName
         source = "Terraform"
