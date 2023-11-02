@@ -77,6 +77,13 @@ resource "azurerm_synapse_firewall_rule" "firewall" {
     end_ip_address      = "255.255.255.255"
 }
 
+# Give the workspace access to the storage account
+resource "azurerm_role_assignment" "storage" {
+    scope                = azurerm_storage_account.storage.id
+    role_definition_name = "Storage Blob Data Contributor"
+    principal_id         = azurerm_synapse_workspace.synapse.identity[0].principal_id
+}
+
 # Create a dedicated SQL pool
 resource "azurerm_synapse_sql_pool" "sqlpool" {
   name                 = "${var.uniqueString}sqlpool${var.envName}"
