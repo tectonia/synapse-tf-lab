@@ -48,7 +48,7 @@ resource "azurerm_storage_account" "storage" {
 
 # Create a storage container
 resource "azurerm_storage_container" "container" {
-    name                  = "${azurerm_storage_account.storage.name}/default/${var.uniqueString}filesys${var.envName}}"
+    name                  = "${azurerm_storage_account.storage.name}/default/${var.uniqueString}filesys${var.envName}"
     storage_account_name  = azurerm_storage_account.storage.name
     container_access_type = "private"
 }
