@@ -78,16 +78,23 @@ resource "azurerm_synapse_firewall_rule" "firewall" {
 }
 
 # Give the workspace access to the storage account
-resource "azurerm_role_assignment" "storage" {
+resource "azurerm_role_assignment" "workspacestorageaccess" {
     scope                = azurerm_storage_account.storage.id
     role_definition_name = "Storage Blob Data Contributor"
     principal_id         = azurerm_synapse_workspace.synapse.identity[0].principal_id
 }
 
+# Give the user access to the storage account
+resource "azurerm_role_assignment" "userstorageaccess" {
+    scope                = azurerm_storage_account.storage.id
+    role_definition_name = "Storage Blob Data Contributor"
+    principal_id         = var.user_object_id
+}
+
 # Assign the workspace admin role to the user
-resource "azurerm_role_assignment" "workspace" {
+resource "azurerm_role_assignment" "usersynapseaccess" {
     scope                = azurerm_synapse_workspace.synapse.id
-    role_definition_name = "Synapse Administrator"
+    role_definition_name = "Workspace Admin"
     principal_id         = var.user_object_id
 }
 
