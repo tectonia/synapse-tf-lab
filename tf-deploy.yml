@@ -41,14 +41,14 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    commandOptions: '-var="sql_administrator_password=$(sql_administrator_password)"'
-    environmentServiceNameAzureRM: 'terraform-secret-conn'
+    commandOptions: '-var="sql_administrator_password=$(sql_administrator_password)" -input=false'
+    environmentServiceNameAzureRM: 'terraform-serv-conn'
   displayName: Terraform Plan
 
 - task: TerraformTaskV4@4
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    commandOptions: '-var="sql_administrator_password=$(sql_administrator_password)"'
-    environmentServiceNameAzureRM: 'terraform-secret-conn'
+    commandOptions: '-var="sql_administrator_password=$(sql_administrator_password)" -input=false'
+    environmentServiceNameAzureRM: 'terraform-serv-conn'
   displayName: Terraform Apply
