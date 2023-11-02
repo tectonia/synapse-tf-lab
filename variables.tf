@@ -22,6 +22,12 @@ variable "tenant_id" {
   sensitive = true
 }
 
+variable "user_object_id" {
+  type        = string
+  description = "Azure User Object ID"
+  sensitive = true
+}
+
 variable "envName" {
   type        = string
   description = "Name of the environment where resources are to be deployed"
